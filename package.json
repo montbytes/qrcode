@@ -4,16 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:sass": "sass  --no-source-map src/style:public/css",
-    "copy:html": "copyfiles -u 1 ./src/*.html public",
+    "build:sass": "sass  --no-source-map src/style:docs/css",
+    "copy:html": "copyfiles -u 1 ./src/*.html docs",
     "copy": "npm-run-all --parallel copy:*",
     "watch:html": "onchange 'src/*.html' -- npm run copy:html",
-    "watch:sass": "sass  --no-source-map --watch src/style:public/css",
+    "watch:sass": "sass  --no-source-map --watch src/style:docs/css",
     "watch": "npm-run-all --parallel watch:*",
-    "serve": "browser-sync start --server public --files public",
+    "serve": "browser-sync start --server docs --files docs",
     "start": "npm-run-all copy --parallel watch serve",
     "build": "npm-run-all copy:html build:*",
-    "postbuild": "postcss public/css/*.css -u autoprefixer cssnano -r --no-map"
+    "postbuild": "postcss docs/css/*.css -u autoprefixer cssnano -r --no-map"
   },
   "dependencies": {
     "autoprefixer": "^10.4.2",
